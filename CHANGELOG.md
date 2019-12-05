@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.15.5
+
+* Use absolute path to package project directory, when it's different from repo root
+
 ## 0.15.4
 
 * Don't execute shell as a program explicitly (#10)

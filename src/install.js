@@ -27,16 +27,7 @@ function createHook(huskyDir, vcs, hooksDir, hookName, cmd) {
 
   // Assuming that this file is in node_modules/husky
   const packageDir = path.join(huskyDir, '..', '..')
-
-  // Get project directory
-  // When used in submodule, the project dir is the first .hg/.git that is found
-  const projectDir = findParent(huskyDir, vcs.dirname)
-
-  // In order to support projects with package.json in a different directory
-  // than .hg/.git, find relative path from project directory to package.json
-  const relativePath = path.join('.', path.relative(projectDir, packageDir))
-
-  const hookScript = getHookScript(vcs, hookName, relativePath, cmd)
+  const hookScript = getHookScript(vcs, hookName, packageDir, cmd)
 
   // Create hooks directory if needed
   if (!fs.existsSync(hooksDir)) {
